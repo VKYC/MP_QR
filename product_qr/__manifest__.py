@@ -8,7 +8,7 @@
     'license': 'LGPL-3',
     'category': '',
     'depends': [
-        'product'
+        'product', 'base_accounting_kit'
     ],
     'data': [
         'data/ir_sequence.xml',
