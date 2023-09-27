@@ -3,18 +3,30 @@
     <template id="report_simple_label2x7" name="report_simple_label2x7" inherit_id="product.report_simple_label2x7">
         <xpath expr="//div[hasclass('o_label_left_column')]" position="inside">
             <t t-if="product.env.context.get('active_model') == 'stock.picking'">
-                <t t-set="base_qr" t-value="'stock.picking'+ str(product.env.context.get('active_id')) + str(page) + str(row) + str(column) + product.default_code"/>
+                <t t-if="not make_invisible">
+                    <t t-set="base_qr" t-value="product.env['transfer.stock.picking.product'].get_code_for_qr(page, row, column, product.env.context.get('active_id'), product.id, product._name)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="base_qr" t-value="False"/>
+                </t>
             </t>
             <t t-else="">
                 <t t-set="base_qr" t-value="product.default_code"/>
             </t>
             <img t-att-src="'data:image/png;base64,#{%s}' % product.env['qr.generator'].get_qr_code(base_qr)" style="display: block;margin-left: auto;margin-right: auto;width:18mm"/>
         </xpath>
+        <xpath expr="//div[hasclass('text-right')]/t" position="replace"> </xpath>
+        <xpath expr="//div[hasclass('text-right')]/t" position="replace"> </xpath>
     </template>
     <template id="report_simple_label4x7" name="report_simple_label4x7" inherit_id="product.report_simple_label4x7">
         <xpath expr="//div[hasclass('o_label_small_barcode')]" position="inside">
             <t t-if="product.env.context.get('active_model') == 'stock.picking'">
-                <t t-set="base_qr" t-value="'stock.picking'+ str(product.env.context.get('active_id')) + str(page) + str(row) + str(column) + product.default_code"/>
+                <t t-if="not make_invisible">
+                    <t t-set="base_qr" t-value="product.env['transfer.stock.picking.product'].get_code_for_qr(page, row, column, product.env.context.get('active_id'), product.id, product._name)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="base_qr" t-value="False"/>
+                </t>
             </t>
             <t t-else="">
                 <t t-set="base_qr" t-value="product.default_code"/>
@@ -25,7 +37,12 @@
     <template id="report_simple_label4x12" name="report_simple_label4x12" inherit_id="product.report_simple_label4x12">
         <xpath expr="//div[hasclass('o_label_small_barcode')]" position="inside">
             <t t-if="product.env.context.get('active_model') == 'stock.picking'">
-                <t t-set="base_qr" t-value="'stock.picking'+ str(product.env.context.get('active_id')) + str(page) + str(row) + str(column) + product.default_code"/>
+                <t t-if="not make_invisible">
+                    <t t-set="base_qr" t-value="product.env['transfer.stock.picking.product'].get_code_for_qr(page, row, column, product.env.context.get('active_id'), product.id, product._name)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="base_qr" t-value="False"/>
+                </t>
             </t>
             <t t-else="">
                 <t t-set="base_qr" t-value="product.default_code"/>
@@ -36,7 +53,12 @@
     <template id="report_simple_label_dymo" name="report_simple_label_dymo" inherit_id="product.report_simple_label_dymo">
         <xpath expr="//div[hasclass('o_label_small_barcode')]" position="inside">
             <t t-if="product.env.context.get('active_model') == 'stock.picking'">
-                <t t-set="base_qr" t-value="'stock.picking'+ str(product.env.context.get('active_id')) + str(page) + str(row) + str(column) + product.default_code"/>
+                <t t-if="not make_invisible">
+                    <t t-set="base_qr" t-value="product.env['transfer.stock.picking.product'].get_code_for_qr(page, row, column, product.env.context.get('active_id'), product.id, product._name)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="base_qr" t-value="False"/>
+                </t>
             </t>
             <t t-else="">
                 <t t-set="base_qr" t-value="product.default_code"/>
