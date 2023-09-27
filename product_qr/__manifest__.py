@@ -8,7 +8,7 @@
     'license': 'LGPL-3',
     'category': '',
     'depends': [
-        'product', 'base_accounting_kit', 'qr_generator', 'stock'
+        'product', 'base_accounting_kit', 'stock'
     ],
     'data': [
         'security/ir.model.access.csv',
